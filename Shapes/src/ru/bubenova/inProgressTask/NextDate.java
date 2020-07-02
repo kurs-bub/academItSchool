@@ -15,30 +15,34 @@ public class NextDate {
         System.out.print("Введите год: ");
         int year = scanner.nextInt();
 
-        int maxDaysInMonth;
+        int maxDaysInMonthCount;
 
         switch (month) {
             case 4:
             case 6:
             case 9:
             case 11:
-                maxDaysInMonth = 30;
+                maxDaysInMonthCount = 30;
                 break;
             case 2:
-                if (((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0))
-                    maxDaysInMonth = 29;
-                else
-                    maxDaysInMonth = 28;
+                if (((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0)) {
+                    maxDaysInMonthCount = 29;
+                } else {
+                    maxDaysInMonthCount = 28;
+                }
                 break;
             default:
-                maxDaysInMonth = 31;
+                maxDaysInMonthCount = 31;
                 break;
         }
 
-        boolean isCorrectData = (day <= maxDaysInMonth && month <= 12);
+        boolean isCorrectData = (day <= maxDaysInMonthCount && month <= 12);
 
-        if (isCorrectData) {
-            if (day == maxDaysInMonth) {
+        if (!isCorrectData) {
+            System.out.println("Вы ввели некорректную дату!");
+            return;
+        } else {
+            if (day == maxDaysInMonthCount) {
                 if (month == 12) {
                     day = 1;
                     month = 1;
@@ -54,9 +58,6 @@ public class NextDate {
             }
 
             day++;
-        } else {
-            System.out.println("Вы ввели некорректную дату!");
-            return;
         }
 
         System.out.println("Завтра будет: " + day + "." + month + "." + year);
