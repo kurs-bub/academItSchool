@@ -26,10 +26,10 @@ public class Range {
     }
 
     public double getLength() {
-        return Math.abs(to - from);
+        return to - from;
     }
 
     public boolean isInside(double number) {
-        return number <= this.to && number >= this.from;
+        return number <= to && number >= from;
     }
 }

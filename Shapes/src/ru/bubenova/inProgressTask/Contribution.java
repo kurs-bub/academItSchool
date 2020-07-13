@@ -17,8 +17,8 @@ public class Contribution {
 
         double profit = 0;
         final int monthsInYearCount = 12;
-        final int divisorOfOneHundred = 100;
-        double contributionCoefficient = percent / divisorOfOneHundred / monthsInYearCount;
+        final int oneHundredPercent = 100;
+        double contributionCoefficient = percent / oneHundredPercent / monthsInYearCount;
 
         for (int i = 0; i < userMonthsCount; i++) {
             profit += (userStartSum + profit) * contributionCoefficient;
@@ -26,8 +26,7 @@ public class Contribution {
 
         double userFinalSum = profit + userStartSum;
 
-        System.out.printf("Сумма вклада по истечению срока составит: %.2f у.е.", userFinalSum);
-        System.out.println();
+        System.out.printf("Сумма вклада по истечению срока составит: %.2f у.е." + "\n", userFinalSum);
         System.out.printf("Прибыль составит: %.2f у.е.", profit);
     }
 }

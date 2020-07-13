@@ -25,7 +25,7 @@ public class NextDate {
                 maxDaysInMonthCount = 30;
                 break;
             case 2:
-                if (((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0)) {
+                if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
                     maxDaysInMonthCount = 29;
                 } else {
                     maxDaysInMonthCount = 28;
@@ -36,9 +36,9 @@ public class NextDate {
                 break;
         }
 
-        boolean isCorrectData = (day <= maxDaysInMonthCount && month <= 12);
+        boolean isCorrectDate = (day <= maxDaysInMonthCount && month <= 12);
 
-        if (!isCorrectData) {
+        if (!isCorrectDate) {
             System.out.println("Вы ввели некорректную дату!");
             return;
         } else {
