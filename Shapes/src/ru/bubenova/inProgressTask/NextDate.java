@@ -41,24 +41,24 @@ public class NextDate {
         if (!isCorrectDate) {
             System.out.println("Вы ввели некорректную дату!");
             return;
-        } else {
-            if (day == maxDaysInMonthCount) {
-                if (month == 12) {
-                    day = 1;
-                    month = 1;
-                    year++;
-                    System.out.println("Завтра будет: " + day + "." + month + "." + year);
-                    return;
-                }
+        }
 
+        if (day == maxDaysInMonthCount) {
+            if (month == 12) {
                 day = 1;
-                month++;
+                month = 1;
+                year++;
                 System.out.println("Завтра будет: " + day + "." + month + "." + year);
                 return;
             }
 
-            day++;
+            day = 1;
+            month++;
+            System.out.println("Завтра будет: " + day + "." + month + "." + year);
+            return;
         }
+
+        day++;
 
         System.out.println("Завтра будет: " + day + "." + month + "." + year);
     }
