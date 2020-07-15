@@ -18,18 +18,17 @@ public class Contribution {
         final int monthsInYearCount = 12;
         final int oneHundredPercent = 100;
 
-        double profit;
         double contributionSum = userStartSum;
-        double contributionCoefficient = percent / oneHundredPercent / monthsInYearCount;
+        double contributionCoefficient = percent / oneHundredPercent;
 
         for (int i = 0; i < userMonthsCount; i++) {
-            profit = userStartSum * contributionCoefficient;
+            double profit = userStartSum * contributionCoefficient / monthsInYearCount;
             contributionSum += profit;
         }
 
         double totalProfit = contributionSum - userStartSum;
 
-        System.out.printf("Сумма вклада по истечению срока составит: %.2f у.е." + "\n", contributionSum);
-        System.out.printf("Прибыль составит: %.2f у.е.", totalProfit);
+        System.out.format("Сумма вклада по истечению срока составит: %.3f у.е."
+                + System.lineSeparator() + "Прибыль составит: %.3f у.е.", contributionSum, totalProfit);
     }
 }
