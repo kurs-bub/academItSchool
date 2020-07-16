@@ -1,4 +1,6 @@
-package ru.bubenova.inProgressTask;
+package ru.bubenova.completedTask.lesson7;
+
+import ru.bubenova.completedTask.lesson7.Range;
 
 import java.util.Scanner;
 

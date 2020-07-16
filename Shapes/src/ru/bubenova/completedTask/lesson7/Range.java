@@ -1,4 +1,4 @@
-package ru.bubenova.inProgressTask;
+package ru.bubenova.completedTask.lesson7;
 
 public class Range {
     private double from;
