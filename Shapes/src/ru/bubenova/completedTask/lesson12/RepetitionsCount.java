@@ -1,4 +1,4 @@
-package ru.bubenova.inProgressTask;
+package ru.bubenova.completedTask.lesson12;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
