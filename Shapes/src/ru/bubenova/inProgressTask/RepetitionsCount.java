@@ -7,11 +7,18 @@ import java.util.Scanner;
 public class RepetitionsCount {
     public static void main(String[] args) throws FileNotFoundException {
         try (Scanner scanner = new Scanner(new FileInputStream("XXX.txt"))) {
-            String text = scanner.nextLine();
             String template = "забор";
-
             System.out.println("Ищем упоминание текста: " + template);
-            System.out.println("Количество раз, когда встречается текст: " + getRepetitionsCount(text, template));
+
+            int repetitionsCountTotal = 0;
+
+            while (scanner.hasNextLine()) {
+                String text = scanner.nextLine();
+                int repetitionsCountInLine = getRepetitionsCount(text, template);
+                repetitionsCountTotal += repetitionsCountInLine;
+            }
+
+            System.out.println("Количество раз, когда встречается текст: " + repetitionsCountTotal);
         }
     }
 
