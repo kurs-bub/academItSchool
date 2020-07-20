@@ -22,7 +22,7 @@ public class Contribution {
         double contributionCoefficient = percent / oneHundredPercent;
 
         for (int i = 0; i < userMonthsCount; i++) {
-            double profit = userStartSum * contributionCoefficient / monthsInYearCount;
+            double profit = contributionSum * contributionCoefficient / monthsInYearCount;
             contributionSum += profit;
         }
 
