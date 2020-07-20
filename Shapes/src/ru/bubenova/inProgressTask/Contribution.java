@@ -28,7 +28,7 @@ public class Contribution {
 
         double totalProfit = contributionSum - userStartSum;
 
-        System.out.format("Сумма вклада по истечению срока составит: %.2f у.е."
-                + System.lineSeparator() + "Прибыль составит: %.2f у.е.", contributionSum, totalProfit);
+        System.out.printf("Сумма вклада по истечению срока составит: %.2f у.е.%n", contributionSum);
+        System.out.printf("Прибыль составит: %.2f у.е.", totalProfit);
     }
 }
