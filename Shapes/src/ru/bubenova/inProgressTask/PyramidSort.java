@@ -13,59 +13,45 @@ public class PyramidSort {
         }
     }
 
-    public static void siftChildren(int[] array, int length, int i) {
-        int child1 = 2 * i + 1;
-        int child2 = 2 * i + 2;
+    public static void sortArrayInAscendingOrder(int[] array) {
+        for (int i = array.length / 2 - 1; i >= 0; i--) {
+            siftElements(array, array.length, i);
+        }
 
-        if (child1 <= array.length - 1 - i) {
-            if (child2 <= array.length - 1 - i) {
-                if (array[child1] >= array[child2]) {
-                    if (array[i] < array[child1]) {
-                        int temp = array[i];
-                        array[i] = array[child1];
-                        array[child1] = temp;
+        for (int i = array.length - 1; i >= 1; i--) {
+            int temp = array[0];
+            array[0] = array[i];
+            array[i] = temp;
 
-                        siftChildren(array, child1, i);
-                    }
-                }
-
-                if (array[i] < array[child2]) {
-                    int temp = array[i];
-                    array[i] = array[child2];
-                    array[child2] = temp;
-
-                    siftChildren(array, child2, i);
-                }
-            }
-
-            if (array[i] < array[child1]) {
-                int temp = array[i];
-                array[i] = array[child1];
-                array[child1] = temp;
-
-                siftChildren(array, 2 * i + 1, i);
-            }
+            siftElements(array, i, 0);
         }
     }
 
-    public static void sortArrayInAscendingOrder(int[] array) {
-        if (array.length == 0) {
-            return;
-        }
+    public static void siftElements(int[] array, int arrayLength, int parentIndex) {
+        int maxIndex = parentIndex;
 
-        //строим кучу, проходим от первого без ответвлений к корню
-        int elementIndex = array.length / 2 - 1;
+        while (true) {
+            int leftChildIndex = 2 * parentIndex + 1;
 
-        for (int i = elementIndex; i >= 0; i--) {
-            siftChildren(array, array.length, i);
-        }
+            if ((leftChildIndex < arrayLength) && (array[leftChildIndex] > array[maxIndex])) {
+                maxIndex = leftChildIndex;
+            }
 
-        for (int i = 0; i < array.length - 1; i++) {
-            int temp = array[array.length - 1 - i];
-            array[array.length - 1 - i] = array[0];
-            array[0] = temp;
+            int rightChildIndex = 2 * parentIndex + 2;
 
-            siftChildren(array, 0, i + 1);
+            if ((rightChildIndex < arrayLength) && (array[rightChildIndex] > array[maxIndex])) {
+                maxIndex = rightChildIndex;
+            }
+
+            if (maxIndex == parentIndex) {
+                break;
+            } else {
+                int temp = array[parentIndex];
+                array[parentIndex] = array[maxIndex];
+                array[maxIndex] = temp;
+
+                parentIndex = maxIndex;
+            }
         }
     }
 }
