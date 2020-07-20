@@ -13,19 +13,19 @@ public class PyramidSort {
         }
     }
 
-    public static void checkChangeChildren(int[] array, int i, int a) {
+    public static void siftChildren(int[] array, int length, int i) {
         int child1 = 2 * i + 1;
         int child2 = 2 * i + 2;
 
-        if (child1 <= array.length - 1 - a) {
-            if (child2 <= array.length - 1 - a) {
+        if (child1 <= array.length - 1 - i) {
+            if (child2 <= array.length - 1 - i) {
                 if (array[child1] >= array[child2]) {
                     if (array[i] < array[child1]) {
                         int temp = array[i];
                         array[i] = array[child1];
                         array[child1] = temp;
 
-                        checkChangeChildren(array, child1, a);
+                        siftChildren(array, child1, i);
                     }
                 }
 
@@ -34,7 +34,7 @@ public class PyramidSort {
                     array[i] = array[child2];
                     array[child2] = temp;
 
-                    checkChangeChildren(array, child2, a);
+                    siftChildren(array, child2, i);
                 }
             }
 
@@ -43,16 +43,21 @@ public class PyramidSort {
                 array[i] = array[child1];
                 array[child1] = temp;
 
-                checkChangeChildren(array, 2 * i + 1, a);
+                siftChildren(array, 2 * i + 1, i);
             }
         }
     }
 
     public static void sortArrayInAscendingOrder(int[] array) {
+        if (array.length == 0) {
+            return;
+        }
+
+        //строим кучу, проходим от первого без ответвлений к корню
         int elementIndex = array.length / 2 - 1;
 
         for (int i = elementIndex; i >= 0; i--) {
-            checkChangeChildren(array, i, 0);
+            siftChildren(array, array.length, i);
         }
 
         for (int i = 0; i < array.length - 1; i++) {
@@ -60,7 +65,7 @@ public class PyramidSort {
             array[array.length - 1 - i] = array[0];
             array[0] = temp;
 
-            checkChangeChildren(array, 0, i + 1);
+            siftChildren(array, 0, i + 1);
         }
     }
 }
