@@ -45,13 +45,13 @@ public class PyramidSort {
 
             if (maxIndex == parentIndex) {
                 break;
-            } else {
-                int temp = array[parentIndex];
-                array[parentIndex] = array[maxIndex];
-                array[maxIndex] = temp;
-
-                parentIndex = maxIndex;
             }
+
+            int temp = array[parentIndex];
+            array[parentIndex] = array[maxIndex];
+            array[maxIndex] = temp;
+
+            parentIndex = maxIndex;
         }
     }
 }
