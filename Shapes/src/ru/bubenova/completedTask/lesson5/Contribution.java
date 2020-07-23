@@ -1,4 +1,4 @@
-package ru.bubenova.inProgressTask;
+package ru.bubenova.completedTask.lesson5;
 
 import java.util.Scanner;
 
