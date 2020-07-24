@@ -1,4 +1,4 @@
-package ru.bubenova.inProgressTask;
+package ru.bubenova.completedTask.lesson11;
 
 public class PyramidSort {
     public static void main(String[] args) {
